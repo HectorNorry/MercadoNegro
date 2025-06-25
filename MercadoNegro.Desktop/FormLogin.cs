@@ -44,10 +44,10 @@ namespace MercadoNegro.Desktop
                     this.Hide(); 
 
                     var formPrincipal = new FormPrincipal(usuario);
-                    // formPrincipal.Closed += (s, args) => this.Close(); // <--- ¡ELIMINA ESTA LÍNEA!
+                    
                     formPrincipal.ShowDialog(); 
 
-                    // Cuando formPrincipal se cierra, la ejecución regresa aquí
+                    
                     this.Show(); 
                     txtEmail.Text = "";
                     txtPassword.Text = "";

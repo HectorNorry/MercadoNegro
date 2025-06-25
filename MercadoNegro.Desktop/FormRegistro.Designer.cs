@@ -15,101 +15,130 @@
 
         private void InitializeComponent()
         {
-            this.txtNombre = new System.Windows.Forms.TextBox();
-            this.txtApellido = new System.Windows.Forms.TextBox();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.btnRegistrar = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.SuspendLayout();
-
+            txtNombre = new TextBox();
+            txtApellido = new TextBox();
+            txtEmail = new TextBox();
+            txtPassword = new TextBox();
+            btnRegistrar = new Button();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            label5 = new Label();
+            SuspendLayout();
+            // 
             // txtNombre
-            this.txtNombre.Location = new System.Drawing.Point(120, 30);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(200, 23);
-            this.txtNombre.TabIndex = 0;
-
+            // 
+            txtNombre.Location = new Point(199, 120);
+            txtNombre.Name = "txtNombre";
+            txtNombre.Size = new Size(200, 23);
+            txtNombre.TabIndex = 0;
+            // 
             // txtApellido
-            this.txtApellido.Location = new System.Drawing.Point(120, 70);
-            this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(200, 23);
-            this.txtApellido.TabIndex = 1;
-
+            // 
+            txtApellido.Location = new Point(199, 157);
+            txtApellido.Name = "txtApellido";
+            txtApellido.Size = new Size(200, 23);
+            txtApellido.TabIndex = 1;
+            // 
             // txtEmail
-            this.txtEmail.Location = new System.Drawing.Point(120, 110);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(200, 23);
-            this.txtEmail.TabIndex = 2;
-
+            // 
+            txtEmail.Location = new Point(199, 200);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(200, 23);
+            txtEmail.TabIndex = 2;
+            // 
             // txtPassword
-            this.txtPassword.Location = new System.Drawing.Point(120, 150);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(200, 23);
-            this.txtPassword.TabIndex = 3;
-
+            // 
+            txtPassword.Location = new Point(199, 240);
+            txtPassword.Name = "txtPassword";
+            txtPassword.PasswordChar = '*';
+            txtPassword.Size = new Size(200, 23);
+            txtPassword.TabIndex = 3;
+            // 
             // btnRegistrar
-            this.btnRegistrar.Location = new System.Drawing.Point(150, 190);
-            this.btnRegistrar.Name = "btnRegistrar";
-            this.btnRegistrar.Size = new System.Drawing.Size(120, 30);
-            this.btnRegistrar.TabIndex = 4;
-            this.btnRegistrar.Text = "Registrarse";
-            this.btnRegistrar.UseVisualStyleBackColor = true;
-            this.btnRegistrar.Click += new System.EventHandler(this.BtnRegistrar_Click);
-
+            // 
+            btnRegistrar.BackColor = SystemColors.Highlight;
+            btnRegistrar.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnRegistrar.Location = new Point(199, 299);
+            btnRegistrar.Name = "btnRegistrar";
+            btnRegistrar.Size = new Size(159, 47);
+            btnRegistrar.TabIndex = 4;
+            btnRegistrar.Text = "Registrarse";
+            btnRegistrar.UseVisualStyleBackColor = false;
+            btnRegistrar.Click += BtnRegistrar_Click;
+            // 
             // label1
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(60, 33);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 15);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Nombre:";
-
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 14.25F);
+            label1.Location = new Point(108, 115);
+            label1.Name = "label1";
+            label1.Size = new Size(85, 25);
+            label1.TabIndex = 5;
+            label1.Text = "Nombre:";
+            // 
             // label2
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(60, 73);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 15);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Apellido:";
-
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 14.25F);
+            label2.Location = new Point(108, 155);
+            label2.Name = "label2";
+            label2.Size = new Size(86, 25);
+            label2.TabIndex = 6;
+            label2.Text = "Apellido:";
+            // 
             // label3
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(70, 113);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 15);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Email:";
-
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 14.25F);
+            label3.Location = new Point(118, 195);
+            label3.Name = "label3";
+            label3.Size = new Size(62, 25);
+            label3.TabIndex = 7;
+            label3.Text = "Email:";
+            // 
             // label4
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(40, 153);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(70, 15);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Contraseña:";
-
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 14.25F);
+            label4.Location = new Point(81, 235);
+            label4.Name = "label4";
+            label4.Size = new Size(112, 25);
+            label4.TabIndex = 8;
+            label4.Text = "Contraseña:";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.Location = new Point(172, 31);
+            label5.Name = "label5";
+            label5.Size = new Size(197, 50);
+            label5.TabIndex = 9;
+            label5.Text = "Registrate!";
+            // 
             // FormRegistro
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 261);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnRegistrar);
-            this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.txtApellido);
-            this.Controls.Add(this.txtNombre);
-            this.Name = "FormRegistro";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Registro";
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.PeachPuff;
+            ClientSize = new Size(532, 382);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(btnRegistrar);
+            Controls.Add(txtPassword);
+            Controls.Add(txtEmail);
+            Controls.Add(txtApellido);
+            Controls.Add(txtNombre);
+            Name = "FormRegistro";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Registro";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         private System.Windows.Forms.TextBox txtNombre;
@@ -121,5 +150,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private Label label5;
     }
 }

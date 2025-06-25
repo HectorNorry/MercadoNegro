@@ -15,76 +15,99 @@
 
         private void InitializeComponent()
         {
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.btnLogin = new System.Windows.Forms.Button();
-            this.btnRegistrar = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.SuspendLayout();
-
+            txtEmail = new TextBox();
+            txtPassword = new TextBox();
+            btnLogin = new Button();
+            btnRegistrar = new Button();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            SuspendLayout();
+            // 
             // txtEmail
-            this.txtEmail.Location = new System.Drawing.Point(120, 50);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(200, 23);
-            this.txtEmail.TabIndex = 0;
-
+            // 
+            txtEmail.Location = new Point(164, 119);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(200, 23);
+            txtEmail.TabIndex = 0;
+            // 
             // txtPassword
-            this.txtPassword.Location = new System.Drawing.Point(120, 90);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(200, 23);
-            this.txtPassword.TabIndex = 1;
-
+            // 
+            txtPassword.Location = new Point(164, 159);
+            txtPassword.Name = "txtPassword";
+            txtPassword.PasswordChar = '*';
+            txtPassword.Size = new Size(200, 23);
+            txtPassword.TabIndex = 1;
+            // 
             // btnLogin
-            this.btnLogin.Location = new System.Drawing.Point(120, 130);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(90, 30);
-            this.btnLogin.TabIndex = 2;
-            this.btnLogin.Text = "Login";
-            this.btnLogin.UseVisualStyleBackColor = true;
-            this.btnLogin.Click += new System.EventHandler(this.BtnLogin_Click);
-
+            // 
+            btnLogin.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnLogin.Location = new Point(164, 205);
+            btnLogin.Name = "btnLogin";
+            btnLogin.Size = new Size(200, 41);
+            btnLogin.TabIndex = 2;
+            btnLogin.Text = "Iniciar Sesion";
+            btnLogin.UseVisualStyleBackColor = true;
+            btnLogin.Click += BtnLogin_Click;
+            // 
             // btnRegistrar
-            this.btnRegistrar.Location = new System.Drawing.Point(230, 130);
-            this.btnRegistrar.Name = "btnRegistrar";
-            this.btnRegistrar.Size = new System.Drawing.Size(90, 30);
-            this.btnRegistrar.TabIndex = 3;
-            this.btnRegistrar.Text = "Registrarse";
-            this.btnRegistrar.UseVisualStyleBackColor = true;
-            this.btnRegistrar.Click += new System.EventHandler(this.BtnRegistrar_Click);
-
+            // 
+            btnRegistrar.Location = new Point(413, 304);
+            btnRegistrar.Name = "btnRegistrar";
+            btnRegistrar.Size = new Size(90, 30);
+            btnRegistrar.TabIndex = 3;
+            btnRegistrar.Text = "Registrarse";
+            btnRegistrar.UseVisualStyleBackColor = true;
+            btnRegistrar.Click += BtnRegistrar_Click;
+            // 
             // label1
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(70, 53);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 15);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Email:";
-
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(102, 117);
+            label1.Name = "label1";
+            label1.Size = new Size(62, 25);
+            label1.TabIndex = 4;
+            label1.Text = "Email:";
+            // 
             // label2
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(50, 93);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 15);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Contraseña:";
-
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Location = new Point(52, 157);
+            label2.Name = "label2";
+            label2.Size = new Size(112, 25);
+            label2.TabIndex = 5;
+            label2.Text = "Contraseña:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Yu Gothic", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(132, 38);
+            label3.Name = "label3";
+            label3.Size = new Size(252, 45);
+            label3.TabIndex = 6;
+            label3.Text = "Iniciar Sesion";
+            // 
             // FormLogin
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 211);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnRegistrar);
-            this.Controls.Add(this.btnLogin);
-            this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.txtEmail);
-            this.Name = "FormLogin";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Login";
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ActiveCaption;
+            ClientSize = new Size(515, 346);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(btnRegistrar);
+            Controls.Add(btnLogin);
+            Controls.Add(txtPassword);
+            Controls.Add(txtEmail);
+            Name = "FormLogin";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Login";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         private System.Windows.Forms.TextBox txtEmail;
@@ -93,5 +116,6 @@
         private System.Windows.Forms.Button btnRegistrar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private Label label3;
     }
 }
