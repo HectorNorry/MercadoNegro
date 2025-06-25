@@ -50,7 +50,7 @@ namespace MercadoNegro.Infrastructure.Data
         }
     }
 
-    // Clase factory para las migraciones (solo necesaria para diseño)
+    // Clase factory para las migraciones 
     public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
     {
         public AppDbContext CreateDbContext(string[] args)

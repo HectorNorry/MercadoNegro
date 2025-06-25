@@ -22,7 +22,7 @@ namespace MercadoNegro.Core.Services
         public async Task<Usuario> AutenticarUsuario(string email, string contraseña)
         {
             var usuario = await _usuarioRepository.GetByEmailAsync(email);
-            if (usuario == null || usuario.Password != contraseña) // En producción usar hash
+            if (usuario == null || usuario.Password != contraseña) 
                 return null;
 
             return usuario;
@@ -43,7 +43,7 @@ namespace MercadoNegro.Core.Services
                 Nombre = registroDto.Nombre,
                 Apellido = registroDto.Apellido,
                 Email = registroDto.Email,
-                Password = registroDto.Password, // Debería ser hash en producción
+                Password = registroDto.Password, 
                 Cvu = GenerarCvuUnico(),
                 Saldo = 0
             };
@@ -54,7 +54,7 @@ namespace MercadoNegro.Core.Services
 
         private string GenerarCvuUnico()
         {
-            // Implementación para generar CVU único
+            
             return "CVU" + Guid.NewGuid().ToString().Substring(0, 10).ToUpper();
         }
     }

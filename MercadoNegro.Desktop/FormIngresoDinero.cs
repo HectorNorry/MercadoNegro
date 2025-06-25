@@ -48,11 +48,11 @@ namespace MercadoNegro.Desktop
 
             try
             {
-                // ¡Ahora llamamos al nuevo método específico para depósitos!
+                
                 await _apiClient.DepositarDineroAsync(_usuarioId, monto, "Ingreso por App");
 
                 MessageBox.Show("Dinero ingresado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.DialogResult = DialogResult.OK; // Indica a FormPrincipal que la operación fue exitosa
+                this.DialogResult = DialogResult.OK; 
                 this.Close();
             }
             catch (Exception ex)

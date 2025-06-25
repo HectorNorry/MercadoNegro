@@ -50,7 +50,7 @@ namespace MercadoNegro.Desktop
             btnTransferir.BackColor = Color.FromArgb(40, 167, 69);
             btnCvu.BackColor = Color.FromArgb(108, 117, 125);
 
-            foreach (var btn in new[] { btnIngresar, btnTransferir, btnCvu, btnCerrarSesion, btnGenerarPdf }) // <--- ¡Añade btnGenerarPdf aquí!
+            foreach (var btn in new[] { btnIngresar, btnTransferir, btnCvu}) 
             {
                 btn.ForeColor = Color.White;
                 btn.FlatStyle = FlatStyle.Flat;

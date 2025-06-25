@@ -49,7 +49,7 @@ namespace MercadoNegro.API.Controllers
                     Nombre = registroDto.Nombre,
                     Apellido = registroDto.Apellido,
                     Email = registroDto.Email,
-                    Password = registroDto.Password, // En producción usar hash
+                    Password = registroDto.Password, 
                     Cvu = GenerarCvuUnico(),
                     Saldo = 0
                 };
@@ -108,7 +108,7 @@ namespace MercadoNegro.API.Controllers
             return "CVU" + Guid.NewGuid().ToString().Substring(0, 10).ToUpper();
         }
 
-        [HttpPost("{id}/Deposito")] // Ejemplo de ruta: POST /api/Usuarios/{id}/Deposito
+        [HttpPost("{id}/Deposito")] 
         public async Task<IActionResult> RealizarDeposito(int id, [FromBody] DepositoDTO depositoDto)
         {
             // 1. Validaciones iniciales
@@ -122,7 +122,7 @@ namespace MercadoNegro.API.Controllers
             }
 
             // 2. Buscar al usuario
-            var usuario = await _context.Usuarios.FindAsync(id); // Asumo _context es tu DbContext
+            var usuario = await _context.Usuarios.FindAsync(id); 
             if (usuario == null)
             {
                 return NotFound("Usuario no encontrado.");
@@ -132,15 +132,15 @@ namespace MercadoNegro.API.Controllers
             usuario.Saldo += depositoDto.Monto;
 
             // 4. Registrar el movimiento (ejemplo básico, ajusta a tu modelo de Movimiento)
-            var movimiento = new Movimiento // Asumo que tienes una clase Movimiento
+            var movimiento = new Movimiento 
             {
                 UsuarioId = usuario.Id, // El usuario que recibe el dinero
-                Tipo = "Deposito", // O "Ingreso", según tu enum/string en Movimiento
+                Tipo = "Deposito", 
                 Descripcion = depositoDto.Descripcion,
                 Monto = depositoDto.Monto,
                 Fecha = DateTime.Now,
                 // No hay RemitenteId ni DestinatarioId si no es una transferencia entre usuarios
-                // Puedes poner RemitenteId = null o un ID especial para "Sistema" si lo tienes en tu DB
+                
             };
             _context.Movimientos.Add(movimiento);
 

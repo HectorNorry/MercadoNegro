@@ -20,12 +20,12 @@ namespace MercadoNegro.Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<MovimientoGridItemDTO>> GetByUsuarioIdAsync(int usuarioId) // <-- Cambia el tipo de retorno
+        public async Task<IEnumerable<MovimientoGridItemDTO>> GetByUsuarioIdAsync(int usuarioId) 
         {
             return await _context.Movimientos
                                  .Where(m => m.UsuarioId == usuarioId) // Filtra por el ID del usuario del registro
                                  .OrderByDescending(m => m.Fecha)
-                                 .Select(m => new MovimientoGridItemDTO // <-- Proyecta a tu nuevo DTO
+                                 .Select(m => new MovimientoGridItemDTO 
                                  {
                                      Fecha = m.Fecha,
                                      Descripcion = m.Descripcion,
@@ -33,12 +33,9 @@ namespace MercadoNegro.Infrastructure.Repositories
                                      Tipo = m.Tipo, // Pasamos el tipo original de la DB
                                      OtroParticipante = (m.Tipo == "Transferencia Enviada" && m.Destinatario != null) ? m.Destinatario.Nombre + " " + m.Destinatario.Apellido :
                                                         (m.Tipo == "Transferencia Recibida" && m.Remitente != null) ? m.Remitente.Nombre + " " + m.Remitente.Apellido :
-                                                        null // No hay otro participante para Depósito
+                                                        null 
                                  })
-                                 // Asegúrate de incluir Remitente y Destinatario AQUÍ si los usas en el .Select()
-                                 // Si no incluyes, las propiedades de navegación serán NULL en el servidor antes del .Select()
-                                 // Y te darán un NRE. OJO! Esto puede requerir un .Include() temporal para el .Select().
-                                 // La mejor forma de evitar NRE aquí es usar Left Join implícito con .Where(x != null) o directamente los IDs.
+                                
                                  .ToListAsync();
         }
 

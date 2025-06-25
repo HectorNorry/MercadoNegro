@@ -55,16 +55,16 @@ namespace MercadoNegro.Desktop
         }
         public async Task<Usuario> RegistrarUsuarioAsync(UsuarioRegistroDTO registroDto)
         {
-            try // Asegúrate de que RegistrarUsuarioAsync también tiene un try-catch para ver los errores
+            try 
             {
-                var requestUri = _httpClient.BaseAddress + "usuarios/registro"; // AÑADE ESTA LÍNEA
-                System.Diagnostics.Debug.WriteLine($"Register attempt URL: {requestUri}"); // AÑADE ESTA LÍNEA
+                var requestUri = _httpClient.BaseAddress + "usuarios/registro"; 
+                System.Diagnostics.Debug.WriteLine($"Register attempt URL: {requestUri}"); 
 
                 var response = await _httpClient.PostAsJsonAsync("usuarios/registro", registroDto);
                 response.EnsureSuccessStatusCode();
                 return await response.Content.ReadFromJsonAsync<Usuario>();
             }
-            catch (HttpRequestException ex) // Asegúrate de que capture la excepción y la muestre
+            catch (HttpRequestException ex) 
             {
                 throw new Exception($"Error al conectar con la API (Registro): {ex.Message}");
             }
@@ -75,7 +75,7 @@ namespace MercadoNegro.Desktop
             return await _httpClient.GetFromJsonAsync<Usuario>($"usuarios/{id}");
         }
 
-        public async Task<IEnumerable<MovimientoGridItemDTO>> GetMovimientosAsync(int usuarioId) // <-- Cambia el tipo de retorno
+        public async Task<IEnumerable<MovimientoGridItemDTO>> GetMovimientosAsync(int usuarioId) 
         {
             var response = await _httpClient.GetAsync($"Movimientos/usuario/{usuarioId}");
             response.EnsureSuccessStatusCode();
@@ -89,7 +89,7 @@ namespace MercadoNegro.Desktop
             // Lee el contenido de la respuesta como una cadena, sin importar si es éxito o error.
             var responseContent = await response.Content.ReadAsStringAsync();
 
-            if (!response.IsSuccessStatusCode) // Si el código de estado no es 2xx
+            if (!response.IsSuccessStatusCode) 
             {
                 // Si la API devuelve un mensaje de error plano (como "Saldo insuficiente")
                 // o un JSON de error si lo configuraste, lo mostramos.
@@ -101,17 +101,16 @@ namespace MercadoNegro.Desktop
 
         public async Task DepositarDineroAsync(int usuarioId, decimal monto, string descripcion)
         {
-            var depositoDto = new DepositoDTO // Usa el DTO que creaste
+            var depositoDto = new DepositoDTO 
             {
                 UsuarioId = usuarioId,
                 Monto = monto,
                 Descripcion = descripcion
             };
 
-            // La ruta debe coincidir con la que definiste en tu API
-            var response = await _httpClient.PostAsJsonAsync($"Usuarios/{usuarioId}/Deposito", depositoDto); // Ejemplo: "api/Usuarios/{id}/Deposito"
-
-            // Esto lanzará una HttpRequestException si el status code no es 2xx
+            
+            var response = await _httpClient.PostAsJsonAsync($"Usuarios/{usuarioId}/Deposito", depositoDto); 
+            // HttpRequestException si el status code no es 2xx
             response.EnsureSuccessStatusCode();
         }
     }

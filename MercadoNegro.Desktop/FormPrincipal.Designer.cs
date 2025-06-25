@@ -44,7 +44,7 @@
             // 
             lblBienvenido.AutoSize = true;
             lblBienvenido.Font = new Font("Segoe UI", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblBienvenido.Location = new Point(211, 11);
+            lblBienvenido.Location = new Point(302, 12);
             lblBienvenido.Name = "lblBienvenido";
             lblBienvenido.Size = new Size(337, 47);
             lblBienvenido.TabIndex = 6;
@@ -62,7 +62,7 @@
             // lblSaldo
             // 
             lblSaldo.AutoSize = true;
-            lblSaldo.Location = new Point(83, 57);
+            lblSaldo.Location = new Point(95, 60);
             lblSaldo.Name = "lblSaldo";
             lblSaldo.Size = new Size(37, 15);
             lblSaldo.TabIndex = 1;
@@ -104,12 +104,12 @@
             dgvMovimientos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvMovimientos.Location = new Point(30, 190);
             dgvMovimientos.Name = "dgvMovimientos";
-            dgvMovimientos.Size = new Size(767, 302);
+            dgvMovimientos.Size = new Size(766, 395);
             dgvMovimientos.TabIndex = 5;
             // 
             // btnCerrarSesion
             // 
-            btnCerrarSesion.Location = new Point(693, 11);
+            btnCerrarSesion.Location = new Point(722, 12);
             btnCerrarSesion.Name = "btnCerrarSesion";
             btnCerrarSesion.Size = new Size(75, 23);
             btnCerrarSesion.TabIndex = 7;
@@ -131,7 +131,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(827, 504);
+            ClientSize = new Size(826, 597);
             Controls.Add(btnGenerarPdf);
             Controls.Add(btnCerrarSesion);
             Controls.Add(lblBienvenido);
