@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MercadoNegro.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250625030507_InitialCreate")]
+    [Migration("20250625053002_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
