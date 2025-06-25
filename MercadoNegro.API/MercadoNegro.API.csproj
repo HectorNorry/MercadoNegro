@@ -21,8 +21,4 @@
     <ProjectReference Include="..\MercadoNegro.Infrastructure\MercadoNegro.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="NewFolder\" />
-  </ItemGroup>
-
 </Project>

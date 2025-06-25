@@ -22,6 +22,8 @@ namespace MercadoNegro.Infrastructure.Repositories
         public async Task<IEnumerable<Movimiento>> GetByUsuarioIdAsync(int usuarioId)
         {
             return await _context.Movimientos
+                .Include(m => m.Remitente)
+                .Include(m => m.Destinatario)
                 .Where(m => m.RemitenteId == usuarioId || m.DestinatarioId == usuarioId)
                 .OrderByDescending(m => m.Fecha)
                 .ToListAsync();

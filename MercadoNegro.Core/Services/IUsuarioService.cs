@@ -1,4 +1,5 @@
-﻿using MercadoNegro.Core.Entities;
+﻿using MercadoNegro.Core.DTOs;
+using MercadoNegro.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

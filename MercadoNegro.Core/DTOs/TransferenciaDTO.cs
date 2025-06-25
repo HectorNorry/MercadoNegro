@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace MercadoNegro.Core.DTOs
 {
-    internal class TransferenciaDTO
+    public class TransferenciaDTO
     {
+        public int RemitenteId { get; set; }
+        public string CvuDestinatario { get; set; }
+        public decimal Monto { get; set; }
+        public string Descripcion { get; set; }
     }
 }

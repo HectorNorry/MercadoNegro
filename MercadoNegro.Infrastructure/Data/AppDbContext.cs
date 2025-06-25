@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MercadoNegro.Core.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 
 namespace MercadoNegro.Infrastructure.Data
 {
@@ -18,6 +19,17 @@ namespace MercadoNegro.Infrastructure.Data
 
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Movimiento> Movimientos { get; set; }
+
+        protected AppDbContext() : base() { }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=MercadoNegroDB;Trusted_Connection=True;",
+                    sqlServerOptions => sqlServerOptions.EnableRetryOnFailure());
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -50,6 +62,16 @@ namespace MercadoNegro.Infrastructure.Data
             modelBuilder.Entity<Usuario>()
             .Property(u => u.Saldo)
             .HasColumnType("decimal(18,2)");
+        }
+        public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
+        {
+            public AppDbContext CreateDbContext(string[] args)
+            {
+                var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
+                optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=MercadoNegroDB;Trusted_Connection=True;");
+
+                return new AppDbContext(optionsBuilder.Options);
+            }
         }
     }
 }
