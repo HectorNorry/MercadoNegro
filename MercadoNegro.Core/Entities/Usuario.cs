@@ -13,7 +13,7 @@ namespace MercadoNegro.Core.Entities
         public string Nombre { get; set; } = string.Empty;
         public string Apellido { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
-        public string Contraseña { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
 
         public string Cvu { get; set; } = string.Empty; // Clave única para transferencias
         public decimal Saldo { get; set; } = 0;

@@ -53,7 +53,7 @@ namespace MercadoNegro.Desktop
                     Nombre = txtNombre.Text,
                     Apellido = txtApellido.Text,
                     Email = txtEmail.Text,
-                    Contraseña = txtPassword.Text
+                    Password = txtPassword.Text
                 };
 
                 var usuario = await _apiClient.RegistrarUsuarioAsync(registroDto);

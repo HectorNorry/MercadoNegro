@@ -20,7 +20,7 @@ namespace MercadoNegro.Infrastructure.Migrations
                     Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Apellido = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Contraseña = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Cvu = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Saldo = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },

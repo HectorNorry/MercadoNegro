@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace MercadoNegro.Core.DTOs
 {
-    public class UsuarioLoginDTO
+    public class DepositoDTO
     {
-        public string Email { get; set; }
-        public string Password { get; set; }
+        public int UsuarioId { get; set; }
+        public decimal Monto { get; set; }
+        public string Descripcion { get; set; } 
     }
 }

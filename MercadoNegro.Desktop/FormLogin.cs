@@ -41,10 +41,18 @@ namespace MercadoNegro.Desktop
                 var usuario = await _apiClient.LoginAsync(txtEmail.Text, txtPassword.Text);
                 if (usuario != null)
                 {
-                    this.Hide();
+                    this.Hide(); // Oculta el formulario de login
+
                     var formPrincipal = new FormPrincipal(usuario);
-                    formPrincipal.Closed += (s, args) => this.Close();
-                    formPrincipal.Show();
+                    // formPrincipal.Closed += (s, args) => this.Close(); // <--- ¡ELIMINA ESTA LÍNEA!
+                    formPrincipal.ShowDialog(); // <--- ¡CAMBIA A ShowDialog()!
+
+                    // Cuando formPrincipal se cierra, la ejecución regresa aquí
+                    this.Show(); // <--- Vuelve a mostrar el formulario de login
+                    // Opcional: Limpia los campos para el próximo inicio de sesión
+                    txtEmail.Text = "";
+                    txtPassword.Text = "";
+                    txtEmail.Focus(); // Pone el foco en el campo de email
                 }
                 else
                 {
@@ -55,7 +63,7 @@ namespace MercadoNegro.Desktop
             {
                 MessageBox.Show($"Error al iniciar sesión: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
+                }
 
         private void BtnRegistrar_Click(object sender, EventArgs e)
         {

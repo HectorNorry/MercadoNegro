@@ -56,7 +56,7 @@ namespace MercadoNegro.Infrastructure.Data
         public AppDbContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
-            optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=MercadoNegroDB;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer("Server=localhost;Database=MercadoNegroDB;Trusted_Connection=True;TrustServerCertificate=True;"); // <-- ¡CAMBIO AQUI!
 
             return new AppDbContext(optionsBuilder.Options);
         }

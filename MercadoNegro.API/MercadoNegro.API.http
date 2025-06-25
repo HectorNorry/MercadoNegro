@@ -1,4 +1,4 @@
-@MercadoNegro.API_HostAddress = http://localhost:5062
+@MercadoNegro.API_HostAddress = http://localhost:7011
 
 GET {{MercadoNegro.API_HostAddress}}/weatherforecast/
 Accept: application/json

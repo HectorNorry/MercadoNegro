@@ -2,8 +2,15 @@
 {
     partial class FormPrincipal
     {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -13,99 +20,145 @@
             base.Dispose(disposing);
         }
 
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
         private void InitializeComponent()
         {
-            this.lblSaldoTitulo = new System.Windows.Forms.Label();
-            this.lblSaldo = new System.Windows.Forms.Label();
-            this.btnIngresar.Click += new System.EventHandler(this.BtnIngresar_Click);
-            this.btnTransferir.Click += new System.EventHandler(this.BtnTransferir_Click);
-            this.btnCvu = new System.Windows.Forms.Button();
-            this.dgvMovimientos = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMovimientos)).BeginInit();
-
-            this.SuspendLayout();
+            lblBienvenido = new Label();
+            lblSaldoTitulo = new Label();
+            lblSaldo = new Label();
+            btnIngresar = new Button();
+            btnTransferir = new Button();
+            btnCvu = new Button();
+            dgvMovimientos = new DataGridView();
+            btnCerrarSesion = new Button();
+            btnGenerarPdf = new Button();
+            ((System.ComponentModel.ISupportInitialize)dgvMovimientos).BeginInit();
+            SuspendLayout();
+            // 
+            // lblBienvenido
+            // 
+            lblBienvenido.AutoSize = true;
+            lblBienvenido.Font = new Font("Segoe UI", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblBienvenido.Location = new Point(211, 11);
+            lblBienvenido.Name = "lblBienvenido";
+            lblBienvenido.Size = new Size(337, 47);
+            lblBienvenido.TabIndex = 6;
+            lblBienvenido.Text = "Bienvenido {usuario}";
             // 
             // lblSaldoTitulo
             // 
-            this.lblSaldoTitulo.AutoSize = true;
-            this.lblSaldoTitulo.Location = new System.Drawing.Point(30, 30);
-            this.lblSaldoTitulo.Name = "lblSaldoTitulo";
-            this.lblSaldoTitulo.Size = new System.Drawing.Size(42, 15);
-            this.lblSaldoTitulo.TabIndex = 0;
-            this.lblSaldoTitulo.Text = "SALDO:";
+            lblSaldoTitulo.AutoSize = true;
+            lblSaldoTitulo.Location = new Point(30, 70);
+            lblSaldoTitulo.Name = "lblSaldoTitulo";
+            lblSaldoTitulo.Size = new Size(47, 15);
+            lblSaldoTitulo.TabIndex = 0;
+            lblSaldoTitulo.Text = "SALDO:";
             // 
             // lblSaldo
             // 
-            this.lblSaldo.AutoSize = true;
-            this.lblSaldo.Location = new System.Drawing.Point(80, 25);
-            this.lblSaldo.Name = "lblSaldo";
-            this.lblSaldo.Size = new System.Drawing.Size(60, 15);
-            this.lblSaldo.TabIndex = 1;
-            this.lblSaldo.Text = "$ 0.00";
+            lblSaldo.AutoSize = true;
+            lblSaldo.Location = new Point(83, 57);
+            lblSaldo.Name = "lblSaldo";
+            lblSaldo.Size = new Size(37, 15);
+            lblSaldo.TabIndex = 1;
+            lblSaldo.Text = "$ 0.00";
             // 
             // btnIngresar
             // 
-            this.btnIngresar.Location = new System.Drawing.Point(30, 70);
-            this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(100, 40);
-            this.btnIngresar.TabIndex = 2;
-            this.btnIngresar.Text = "Ingresar";
-            this.btnIngresar.UseVisualStyleBackColor = false;
-
+            btnIngresar.Location = new Point(30, 120);
+            btnIngresar.Name = "btnIngresar";
+            btnIngresar.Size = new Size(114, 40);
+            btnIngresar.TabIndex = 2;
+            btnIngresar.Text = "Ingresar $$";
+            btnIngresar.UseVisualStyleBackColor = false;
+            btnIngresar.Click += BtnIngresar_Click;
             // 
             // btnTransferir
             // 
-            this.btnTransferir.Location = new System.Drawing.Point(150, 70);
-            this.btnTransferir.Name = "btnTransferir";
-            this.btnTransferir.Size = new System.Drawing.Size(100, 40);
-            this.btnTransferir.TabIndex = 3;
-            this.btnTransferir.Text = "Transferir";
-            this.btnTransferir.UseVisualStyleBackColor = false;
+            btnTransferir.Location = new Point(150, 120);
+            btnTransferir.Name = "btnTransferir";
+            btnTransferir.Size = new Size(107, 40);
+            btnTransferir.TabIndex = 3;
+            btnTransferir.Text = "Transferir";
+            btnTransferir.UseVisualStyleBackColor = false;
+            btnTransferir.Click += BtnTransferir_Click;
             // 
             // btnCvu
             // 
-            this.btnCvu.Location = new System.Drawing.Point(270, 70);
-            this.btnCvu.Name = "btnCvu";
-            this.btnCvu.Size = new System.Drawing.Size(100, 40);
-            this.btnCvu.TabIndex = 4;
-            this.btnCvu.Text = "CVU";
-            this.btnCvu.UseVisualStyleBackColor = false;
+            btnCvu.Location = new Point(263, 120);
+            btnCvu.Name = "btnCvu";
+            btnCvu.Size = new Size(108, 40);
+            btnCvu.TabIndex = 4;
+            btnCvu.Text = "Mi CVU";
+            btnCvu.UseVisualStyleBackColor = false;
+            btnCvu.Click += btnCvu_Click;
             // 
             // dgvMovimientos
             // 
-            this.dgvMovimientos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvMovimientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMovimientos.Location = new System.Drawing.Point(30, 130);
-            this.dgvMovimientos.Name = "dgvMovimientos";
-            this.dgvMovimientos.RowTemplate.Height = 25;
-            this.dgvMovimientos.Size = new System.Drawing.Size(740, 300);
-            this.dgvMovimientos.TabIndex = 5;
+            dgvMovimientos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvMovimientos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvMovimientos.Location = new Point(30, 190);
+            dgvMovimientos.Name = "dgvMovimientos";
+            dgvMovimientos.Size = new Size(767, 302);
+            dgvMovimientos.TabIndex = 5;
+            // 
+            // btnCerrarSesion
+            // 
+            btnCerrarSesion.Location = new Point(693, 11);
+            btnCerrarSesion.Name = "btnCerrarSesion";
+            btnCerrarSesion.Size = new Size(75, 23);
+            btnCerrarSesion.TabIndex = 7;
+            btnCerrarSesion.Text = "Salir";
+            btnCerrarSesion.UseVisualStyleBackColor = true;
+            btnCerrarSesion.Click += btnCerrarSesion_Click;
+            // 
+            // btnGenerarPdf
+            // 
+            btnGenerarPdf.Location = new Point(669, 156);
+            btnGenerarPdf.Name = "btnGenerarPdf";
+            btnGenerarPdf.Size = new Size(128, 28);
+            btnGenerarPdf.TabIndex = 8;
+            btnGenerarPdf.Text = "Descargar Resumen";
+            btnGenerarPdf.UseVisualStyleBackColor = true;
+            btnGenerarPdf.Click += btnGenerarPdf_Click;
             // 
             // FormPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dgvMovimientos);
-            this.Controls.Add(this.btnCvu);
-            this.Controls.Add(this.btnTransferir);
-            this.Controls.Add(this.btnIngresar);
-            this.Controls.Add(this.lblSaldo);
-            this.Controls.Add(this.lblSaldoTitulo);
-            this.Name = "FormPrincipal";
-            this.Text = "Mercado Negro";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMovimientos)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(827, 504);
+            Controls.Add(btnGenerarPdf);
+            Controls.Add(btnCerrarSesion);
+            Controls.Add(lblBienvenido);
+            Controls.Add(dgvMovimientos);
+            Controls.Add(btnCvu);
+            Controls.Add(btnTransferir);
+            Controls.Add(btnIngresar);
+            Controls.Add(lblSaldo);
+            Controls.Add(lblSaldoTitulo);
+            Name = "FormPrincipal";
+            Text = "Mercado Negro";
+            ((System.ComponentModel.ISupportInitialize)dgvMovimientos).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
+
         }
 
+        #endregion
+
+        private System.Windows.Forms.Label lblBienvenido; // Nuevo campo declarado
         private System.Windows.Forms.Label lblSaldoTitulo;
         private System.Windows.Forms.Label lblSaldo;
         private System.Windows.Forms.Button btnIngresar;
         private System.Windows.Forms.Button btnTransferir;
         private System.Windows.Forms.Button btnCvu;
         private System.Windows.Forms.DataGridView dgvMovimientos;
+        private Button btnCerrarSesion;
+        private Button btnGenerarPdf;
     }
 }

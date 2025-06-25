@@ -18,8 +18,10 @@ namespace MercadoNegro.API.Controllers
         [HttpGet("usuario/{usuarioId}")]
         public async Task<IActionResult> GetByUsuarioId(int usuarioId)
         {
+            // El repositorio ahora devuelve IEnumerable<MovimientoGridItemDTO>
             var movimientos = await _movimientoRepository.GetByUsuarioIdAsync(usuarioId);
             return Ok(movimientos);
         }
     }
 }
+

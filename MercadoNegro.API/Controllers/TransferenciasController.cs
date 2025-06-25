@@ -4,6 +4,7 @@ using MercadoNegro.Core.Interfaces.MercadoNegro.Core.Interfaces;
 using MercadoNegro.Core.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System; 
 
 namespace MercadoNegro.API.Controllers
 {
@@ -35,6 +36,12 @@ namespace MercadoNegro.API.Controllers
                 if (destinatario == null)
                     return BadRequest("Destinatario no encontrado");
 
+                // Validar que no sea transferencia a si mismo (opcional, pero buena práctica)
+                if (remitente.Id == destinatario.Id)
+                {
+                    return BadRequest("No se puede transferir dinero a uno mismo.");
+                }
+
                 if (remitente.Saldo < transferenciaDto.Monto)
                     return BadRequest("Saldo insuficiente");
 
@@ -44,24 +51,48 @@ namespace MercadoNegro.API.Controllers
                 remitente.Saldo -= transferenciaDto.Monto;
                 destinatario.Saldo += transferenciaDto.Monto;
 
-                var movimiento = new Movimiento
+                // Crear movimiento para el REMITENTE
+                var movimientoRemitente = new Movimiento
                 {
+                    UsuarioId = remitente.Id, // El usuario que envió el dinero
+                    Tipo = "Transferencia Enviada", // ¡Asigna el tipo aquí!
                     Monto = transferenciaDto.Monto,
                     Descripcion = transferenciaDto.Descripcion,
-                    RemitenteId = remitente.Id,
-                    DestinatarioId = destinatario.Id,
+                    RemitenteId = remitente.Id, // Se auto-referencia como remitente
+                    DestinatarioId = destinatario.Id, // ID del destinatario
                     Fecha = DateTime.Now
                 };
+                await _movimientoRepository.AddAsync(movimientoRemitente);
 
+                // Crear movimiento para el DESTINATARIO (opcional, pero es bueno registrarlo para ambos)
+                var movimientoDestinatario = new Movimiento
+                {
+                    UsuarioId = destinatario.Id, // El usuario que recibió el dinero
+                    Tipo = "Transferencia Recibida", // ¡Asigna el tipo aquí!
+                    Monto = transferenciaDto.Monto,
+                    Descripcion = transferenciaDto.Descripcion,
+                    RemitenteId = remitente.Id, // ID del remitente
+                    DestinatarioId = destinatario.Id, // Se auto-referencia como destinatario
+                    Fecha = DateTime.Now
+                };
+                await _movimientoRepository.AddAsync(movimientoDestinatario);
+
+
+                // Actualizar saldos de los usuarios (asegúrate de que los repositorios los actualicen en la DB)
                 await _usuarioRepository.UpdateAsync(remitente);
                 await _usuarioRepository.UpdateAsync(destinatario);
-                await _movimientoRepository.AddAsync(movimiento);
 
-                return Ok(movimiento);
+                // Si tu IMovimientoRepository.AddAsync no guarda los cambios,
+                // puede que necesites un SaveChanges en tu UnitOfWork o DbContext directamente aquí,
+                // pero si tus repositorios lo manejan internamente, está bien.
+
+                return Ok("Transferencia realizada con éxito."); // Retorna un mensaje de éxito
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                // Para depuración, puedes loguear la InnerException también
+                // Console.WriteLine($"Error interno en transferencia: {ex.InnerException?.Message}");
+                return BadRequest(ex.Message); // Esto enviará el mensaje de la excepción al cliente
             }
         }
     }

@@ -48,18 +48,11 @@ namespace MercadoNegro.Desktop
 
             try
             {
-                // Simulamos una transferencia desde el sistema (ID 1) al usuario
-                var transferenciaDto = new TransferenciaDTO
-                {
-                    RemitenteId = 1, // ID del sistema
-                    CvuDestinatario = (await _apiClient.GetUsuarioAsync(_usuarioId)).Cvu,
-                    Monto = monto,
-                    Descripcion = "Ingreso de dinero"
-                };
+                // ¡Ahora llamamos al nuevo método específico para depósitos!
+                await _apiClient.DepositarDineroAsync(_usuarioId, monto, "Ingreso por App");
 
-                await _apiClient.RealizarTransferenciaAsync(transferenciaDto);
-
-                this.DialogResult = DialogResult.OK;
+                MessageBox.Show("Dinero ingresado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.DialogResult = DialogResult.OK; // Indica a FormPrincipal que la operación fue exitosa
                 this.Close();
             }
             catch (Exception ex)

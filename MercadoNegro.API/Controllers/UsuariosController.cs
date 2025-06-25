@@ -34,7 +34,7 @@ namespace MercadoNegro.API.Controllers
                 if (string.IsNullOrWhiteSpace(registroDto.Nombre) ||
                     string.IsNullOrWhiteSpace(registroDto.Apellido) ||
                     string.IsNullOrWhiteSpace(registroDto.Email) ||
-                    string.IsNullOrWhiteSpace(registroDto.Contraseña))
+                    string.IsNullOrWhiteSpace(registroDto.Password))
                 {
                     return BadRequest("Todos los campos son obligatorios");
                 }
@@ -49,7 +49,7 @@ namespace MercadoNegro.API.Controllers
                     Nombre = registroDto.Nombre,
                     Apellido = registroDto.Apellido,
                     Email = registroDto.Email,
-                    Contraseña = registroDto.Contraseña, // En producción usar hash
+                    Password = registroDto.Password, // En producción usar hash
                     Cvu = GenerarCvuUnico(),
                     Saldo = 0
                 };
@@ -71,7 +71,7 @@ namespace MercadoNegro.API.Controllers
             try
             {
                 var usuario = await _usuarioRepository.GetByEmailAsync(loginDto.Email);
-                if (usuario == null || usuario.Contraseña != loginDto.Contraseña)
+                if (usuario == null || usuario.Password != loginDto.Password)
                 {
                     return Unauthorized("Credenciales inválidas");
                 }
@@ -106,6 +106,49 @@ namespace MercadoNegro.API.Controllers
         private string GenerarCvuUnico()
         {
             return "CVU" + Guid.NewGuid().ToString().Substring(0, 10).ToUpper();
+        }
+
+        [HttpPost("{id}/Deposito")] // Ejemplo de ruta: POST /api/Usuarios/{id}/Deposito
+        public async Task<IActionResult> RealizarDeposito(int id, [FromBody] DepositoDTO depositoDto)
+        {
+            // 1. Validaciones iniciales
+            if (id != depositoDto.UsuarioId)
+            {
+                return BadRequest("El ID del usuario en la URL no coincide con el ID del depósito.");
+            }
+            if (depositoDto.Monto <= 0)
+            {
+                return BadRequest("El monto del depósito debe ser mayor que cero.");
+            }
+
+            // 2. Buscar al usuario
+            var usuario = await _context.Usuarios.FindAsync(id); // Asumo _context es tu DbContext
+            if (usuario == null)
+            {
+                return NotFound("Usuario no encontrado.");
+            }
+
+            // 3. Realizar el depósito
+            usuario.Saldo += depositoDto.Monto;
+
+            // 4. Registrar el movimiento (ejemplo básico, ajusta a tu modelo de Movimiento)
+            var movimiento = new Movimiento // Asumo que tienes una clase Movimiento
+            {
+                UsuarioId = usuario.Id, // El usuario que recibe el dinero
+                Tipo = "Deposito", // O "Ingreso", según tu enum/string en Movimiento
+                Descripcion = depositoDto.Descripcion,
+                Monto = depositoDto.Monto,
+                Fecha = DateTime.Now,
+                // No hay RemitenteId ni DestinatarioId si no es una transferencia entre usuarios
+                // Puedes poner RemitenteId = null o un ID especial para "Sistema" si lo tienes en tu DB
+            };
+            _context.Movimientos.Add(movimiento);
+
+
+            // 5. Guardar cambios en la base de datos
+            await _context.SaveChangesAsync();
+
+            return Ok(usuario); // Retorna el usuario actualizado o un mensaje de éxito
         }
     }
 }

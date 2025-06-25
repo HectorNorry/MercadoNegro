@@ -18,6 +18,6 @@ namespace MercadoNegro.Core.DTOs
 
         [Required(ErrorMessage = "La contraseña es obligatoria")]
         [MinLength(5, ErrorMessage = "La contraseña debe tener al menos 5 caracteres")]
-        public string Contraseña { get; set; }
+        public string Password { get; set; }
     }
 }

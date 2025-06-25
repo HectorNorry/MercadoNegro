@@ -15,49 +15,50 @@
 
         private void InitializeComponent()
         {
-            this.txtMonto = new System.Windows.Forms.TextBox();
-            this.btnIngresar = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.SuspendLayout();
+            txtMonto = new TextBox();
+            btnIngresar = new Button();
+            label1 = new Label();
+            SuspendLayout();
             // 
             // txtMonto
             // 
-            this.txtMonto.Location = new System.Drawing.Point(120, 50);
-            this.txtMonto.Name = "txtMonto";
-            this.txtMonto.Size = new System.Drawing.Size(150, 23);
-            this.txtMonto.TabIndex = 0;
+            txtMonto.Location = new Point(120, 50);
+            txtMonto.Name = "txtMonto";
+            txtMonto.Size = new Size(150, 23);
+            txtMonto.TabIndex = 0;
             // 
             // btnIngresar
             // 
-            this.btnIngresar.Location = new System.Drawing.Point(120, 90);
-            this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(150, 30);
-            this.btnIngresar.TabIndex = 1;
-            this.btnIngresar.Text = "Ingresar Dinero";
-            this.btnIngresar.UseVisualStyleBackColor = false;
+            btnIngresar.Location = new Point(120, 90);
+            btnIngresar.Name = "btnIngresar";
+            btnIngresar.Size = new Size(150, 30);
+            btnIngresar.TabIndex = 1;
+            btnIngresar.Text = "Ingresar Dinero";
+            btnIngresar.UseVisualStyleBackColor = false;
+            btnIngresar.Click += btnIngresar_Click;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(60, 53);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 15);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Monto:";
+            label1.AutoSize = true;
+            label1.Location = new Point(60, 53);
+            label1.Name = "label1";
+            label1.Size = new Size(46, 15);
+            label1.TabIndex = 2;
+            label1.Text = "Monto:";
             // 
             // FormIngresoDinero
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 161);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnIngresar);
-            this.Controls.Add(this.txtMonto);
-            this.Name = "FormIngresoDinero";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Ingresar Dinero";
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(384, 161);
+            Controls.Add(label1);
+            Controls.Add(btnIngresar);
+            Controls.Add(txtMonto);
+            Name = "FormIngresoDinero";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "Ingresar Dinero";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         private System.Windows.Forms.TextBox txtMonto;
